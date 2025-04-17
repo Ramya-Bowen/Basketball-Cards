@@ -1,0 +1,304 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #202021;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-deck {
+    position: relative;
+    width: 300px; /* enough space for stacked cards */
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+  }
+
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 380px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease, z-index 0.5s;
+  }
+  
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+
+  .number-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 180px; /* space between the number and icon */
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #072F9E;
+  color: white;
+  border: solid 9px #FFD400;
+}
+
+
+
+
+.round {
+    height: 150px;
+    border-radius: 200px;
+    object-fit: cover;
+    border: solid 5px #ffffff;
+    margin-bottom: 30px;
+}
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .barlow-condensed-bold {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .yellow-text {
+    color: #FFD400;
+  }
+
+  .number-icon-back {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  
+
+  .player-stats-item {
+    border-right-width: 1px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: .625rem;
+    padding-top: .625rem;
+    width: 25%;
+}
+  
+.player-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    padding: 16px;
+    background-color: #072F9E;
+    color: white;
+    font-family: "Barlow Condensed", sans-serif;
+    border: 2px solid #FFD400;
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+  
+  .stat-header {
+    font-weight: bold;
+    background-color: #FFD400;
+    color: #072F9E;
+    padding: 8px;
+    text-align: center;
+    border-radius: 4px;
+  }
+  
+  .stat-label {
+    font-weight: 600;
+    color: #FFD400;
+    text-align: right;
+    padding: 8px 12px;
+  }
+  .stat-value {
+    text-align: center;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  
+  .card-deck {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 380px;
+    transform: var(--spread-transform, translateX(0));
+    transition: transform 0.5s ease, z-index 0.5s;
+    transform-style: preserve-3d;
+  }
+  
+  
+  /* Stack effect - cards layered */
+  .card:nth-child(1) {
+    z-index: 3;
+  }
+  .card:nth-child(2) {
+    z-index: 2;
+  }
+  .card:nth-child(3) {
+    z-index: 1;
+  }
+  
+  /* Spread on hover 
+  .card-deck:hover .card:nth-child(1) {
+    --spread-transform: translateX(-300px) rotate(-9deg);
+  }
+  .card-deck:hover .card:nth-child(2) {
+    --spread-transform: translateX(-200px) rotate(-6deg);
+  }
+  .card-deck:hover .card:nth-child(3) {
+    --spread-transform: translateX(-100px) rotate(-3deg);
+  }
+  .card-deck:hover .card:nth-child(4) {
+    --spread-transform: translateX(0px);
+  }
+  .card-deck:hover .card:nth-child(5) {
+    --spread-transform: translateX(100px) rotate(3deg);
+  }
+  .card-deck:hover .card:nth-child(6) {
+    --spread-transform: translateX(200px) rotate(6deg);
+  }
+  .card-deck:hover .card:nth-child(7) {
+    --spread-transform: translateX(300px) rotate(9deg);
+  }
+  .card-deck:hover .card:nth-child(8) {
+    --spread-transform: translateX(400px) rotate(12deg);
+  }
+*/
+  
+  /*default hover*/
+  .card:hover {
+    transform: translateY(-30px) var(--spread-transform);
+    z-index: 10;
+  }
+  
+
+  .card.active {
+    transform: translateY(0px) var(--spread-transform);
+    z-index: 10;
+  }
+
+  .card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  
+  .card-back {
+    transform: rotateY(180deg);
+    display: flex; 
+  }
+
+  .card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+
+
+h1.bebas-neue-regular.yellow-text {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 6rem;
+    position: absolute;
+    top: 60px;
+}
+
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+    position: absolute;
+    bottom: 150px;
+  }
+  
+  .filter-buttons button {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.2rem;
+    background-color: #FFD400;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filter-buttons button:hover {
+    background-color: #ffbb00;
+  }
+
+  .filter-buttons button:focus,
+  .filter-buttons button.active {
+    background-color: #ffbb00;
+  }
+
+
+  
